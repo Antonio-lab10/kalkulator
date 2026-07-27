@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+
+<html lang="hr">
+<head>
+<meta charset="utf-8">
+<title>PLAC — Kalkulator ponude</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PLAC">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#2B3035">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAEQUlEQVR4nO3cP04bQRjG4QXlNqFI44ukiBSJ4yFFSpGLuKGA8yQFggC21/tn1jPz+nlKBPYIfnx8uxhuhkZ8/bb7W/sMLPf8uL+pfYZhGIZqhxBwtlqBX/RJRXydLhn35k8kYt7bOu7NHlzIjNkq7OIPKmTmKB32bckHEzNzlW6myHeHkCmhxLRePaHFTCklWloVtJgpbW1Ti0a8kLmEJSvI7AktZi5lSWuzghYzlza3uclBi5la5rRX9D401DYpaNOZ2qY2eDZoMdOKKS2OBi1mWnOuSTs0UU4GbTrTqrE2jwYtZlp3qlErB1EOgjad6cWxVk1oonwI2nSmN5+bNaGJImiivAVt3aBX79s1oYki6I49PexrH6E5t8Ng3ejRa8yifvHasAndoc8Ri/o/QXfo7n538DZRvxB0p0R93E0r+7MvxnlTIz72fueU+Pwved7STOiOTI13SZwtxFiCoDsj6nGC7pCoTxN0p0R9nKA7JupDgu6cqD8SdABR/yfoEKJ+IeggohZ0nGuPWtCBrjlqQYe61qi7fnFSy5/Ylm31gqYWvh4m9BVKntSCvlKpUQv6iiVGLegrlxa1oIn6cy5BMwxDTtSC5k1C1ILmg96jFjQHeo5a0BzVa9SC5qQeoxY0o3qLWtCc1VPUgmaSXqL+UvsAtXz/8bP2ETb35/evxR/79LA/iPjufnf0X/m28mvvYTChGbHlHwlsRdCM6i1qQXNWT1ELmkl6ifpqLwqPWXMRVdslLnJ7uFA0oZml9UktaGZrOWpBs8iUqGusHYJmsbGo7dB0qdQ/rSlF0KxW+1bde4KmiFaiFjRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRPlS+0DtOT7j5+1j8BKJjRRBE0UQRNF0ES52ovCP79/1T4CGzChiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoonT98tGnh33tI9AYE5oogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJcvv8uL+pfQgo4flxf9PMi5Pu7ne1j0AAKwdRBE2U22F42T1qHwTWeG3YhCaKoInyFrS1g169b9eEJoqgifIhaGsHvfncrAlNlIOgTWl6caxVE5ooR4M2pWndqUZPTmhR06qxNq0cRBkN2pSmNeeaPDuhRU0rprQ4aeUQNbVNbdAOTZTJQZvS1DKnvVkTWtRc2tzmZq8couZSlrS2Ks6v33Z/13w8HLNmaK66KDStKW1tU6vvcoiaUkq0VDRGKwhLlByKRe9Dm9bMVbqZzQI0rRmz1fDbfKIKm/e2/il+0RVB3NfpkqtotZ1X3NlqXU81cxEn8L61ckPgHyP7okiC4VYEAAAAAElFTkSuQmCC">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAEQUlEQVR4nO3cP04bQRjG4QXlNqFI44ukiBSJ4yFFSpGLuKGA8yQFggC21/tn1jPz+nlKBPYIfnx8uxhuhkZ8/bb7W/sMLPf8uL+pfYZhGIZqhxBwtlqBX/RJRXydLhn35k8kYt7bOu7NHlzIjNkq7OIPKmTmKB32bckHEzNzlW6myHeHkCmhxLRePaHFTCklWloVtJgpbW1Ti0a8kLmEJSvI7AktZi5lSWuzghYzlza3uclBi5la5rRX9D401DYpaNOZ2qY2eDZoMdOKKS2OBi1mWnOuSTs0UU4GbTrTqrE2jwYtZlp3qlErB1EOgjad6cWxVk1oonwI2nSmN5+bNaGJImiivAVt3aBX79s1oYki6I49PexrH6E5t8Ng3ejRa8yifvHasAndoc8Ri/o/QXfo7n538DZRvxB0p0R93E0r+7MvxnlTIz72fueU+Pwved7STOiOTI13SZwtxFiCoDsj6nGC7pCoTxN0p0R9nKA7JupDgu6cqD8SdABR/yfoEKJ+IeggohZ0nGuPWtCBrjlqQYe61qi7fnFSy5/Ylm31gqYWvh4m9BVKntSCvlKpUQv6iiVGLegrlxa1oIn6cy5BMwxDTtSC5k1C1ILmg96jFjQHeo5a0BzVa9SC5qQeoxY0o3qLWtCc1VPUgmaSXqL+UvsAtXz/8bP2ETb35/evxR/79LA/iPjufnf0X/m28mvvYTChGbHlHwlsRdCM6i1qQXNWT1ELmkl6ifpqLwqPWXMRVdslLnJ7uFA0oZml9UktaGZrOWpBs8iUqGusHYJmsbGo7dB0qdQ/rSlF0KxW+1bde4KmiFaiFjRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRPlS+0DtOT7j5+1j8BKJjRRBE0UQRNF0ES52ovCP79/1T4CGzChiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoonT98tGnh33tI9AYE5oogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJcvv8uL+pfQgo4flxf9PMi5Pu7ne1j0AAKwdRBE2U22F42T1qHwTWeG3YhCaKoInyFrS1g169b9eEJoqgifIhaGsHvfncrAlNlIOgTWl6caxVE5ooR4M2pWndqUZPTmhR06qxNq0cRBkN2pSmNeeaPDuhRU0rprQ4aeUQNbVNbdAOTZTJQZvS1DKnvVkTWtRc2tzmZq8couZSlrS2Ks6v33Z/13w8HLNmaK66KDStKW1tU6vvcoiaUkq0VDRGKwhLlByKRe9Dm9bMVbqZzQI0rRmz1fDbfKIKm/e2/il+0RVB3NfpkqtotZ1X3NlqXU81cxEn8L61ckPgHyP7okiC4VYEAAAAAElFTkSuQmCC">
+<style>
+:root{
+  --alu:#2B3035; --alu2:#363C43; --alu3:#4A525A; --steel:#8A939B;
+  --paper:#F1F3F4; --card:#FFF; --mark:#FFD400; --ink:#14181B;
+  --good:#1E7145; --warn:#C0392B;
+  --lbl:'Avenir Next','Avenir',-apple-system,sans-serif;
+  --num:ui-monospace,'SF Mono',Menlo,monospace;
+  --body:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --bar:96px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  font-family:var(--body); background:var(--paper); color:var(--ink);
+  padding-bottom:calc(var(--bar) + env(safe-area-inset-bottom));
+  font-size:16px; line-height:1.4;
+}
+.lbl{font-family:var(--lbl);font-size:10px;font-weight:600;letter-spacing:.1em;
+     text-transform:uppercase;color:var(--steel)}
+.num{font-family:var(--num);font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+
+/* ––––– chassis header ––––– */
+header{
+position:sticky;top:0;z-index:30;background:var(–alu);
+padding:calc(env(safe-area-inset-top) + 10px) 16px 10px;
+border-bottom:1px solid #1B1F23;
+}
+.hrow{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.wm{font-family:var(–lbl);font-weight:700;letter-spacing:.22em;font-size:15px;color:#fff}
+.wm span{color:var(–mark)}
+.sub{font-family:var(–lbl);font-size:9px;letter-spacing:.14em;color:var(–steel);
+text-transform:uppercase;margin-top:2px}
+.toggle{display:flex;background:#1F2429;border:1px solid var(–alu3);border-radius:8px;overflow:hidden}
+.toggle button{
+font-family:var(–lbl);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+background:none;border:0;color:var(–steel);padding:9px 11px;min-height:38px}
+.toggle button[aria-pressed=true]{background:var(–mark);color:#14181B}
+
+main{padding:14px 12px 0;max-width:640px;margin:0 auto}
+.card{background:var(–card);border-radius:14px;padding:14px;margin-bottom:12px;
+box-shadow:0 1px 2px rgba(20,24,27,.10)}
+.card>.lbl:first-child{display:block;margin-bottom:10px}
+
+/* ––––– unos ––––– */
+select,input{
+font-family:var(–body);font-size:16px;width:100%;padding:12px;
+border:1px solid #D3D8DC;border-radius:10px;background:#FCFCFD;color:var(–ink);
+min-height:46px;-webkit-appearance:none;appearance:none}
+select{background-image:linear-gradient(45deg,transparent 50%,var(–steel) 50%),
+linear-gradient(135deg,var(–steel) 50%,transparent 50%);
+background-position:calc(100% - 18px) 21px,calc(100% - 13px) 21px;
+background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:38px}
+input:focus,select:focus{outline:2px solid var(–mark);outline-offset:1px;border-color:var(–alu3)}
+input.mm{font-family:var(–num);text-align:center;font-size:18px;font-weight:600;
+background:#FFFDF0;border-color:#E4DCA8}
+.dims{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+.dims .lbl{display:block;text-align:center;margin-bottom:4px}
+.prev{display:flex;justify-content:space-between;align-items:baseline;
+margin-top:12px;padding-top:11px;border-top:1px dashed #D9DEE2}
+.prev .v{font-family:var(–num);font-variant-numeric:tabular-nums}
+.prev .big{font-size:21px;font-weight:700}
+.add{width:100%;margin-top:12px;min-height:52px;border:0;border-radius:11px;
+background:var(–alu);color:#fff;font-family:var(–lbl);font-weight:700;
+letter-spacing:.1em;text-transform:uppercase;font-size:12px}
+.add:disabled{background:#C9CFD4;color:#8A939B}
+.add:active:not(:disabled){background:#1F2429}
+
+/* ––––– pozicije ––––– */
+.pos{display:flex;gap:10px;align-items:flex-start;padding:11px 0;border-bottom:1px solid #EBEEF0}
+.pos:last-child{border-bottom:0}
+.pos .rb{font-family:var(–num);font-size:11px;color:var(–steel);min-width:16px;padding-top:3px}
+.pos .mid{flex:1;min-width:0}
+.pos .nm{font-size:14px;font-weight:600;line-height:1.25}
+.pos .dt{font-family:var(–num);font-size:11.5px;color:var(–steel);margin-top:3px}
+.pos .am{font-family:var(–num);font-size:15px;font-weight:700;text-align:right;white-space:nowrap}
+.pos .del{background:none;border:0;color:var(–warn);font-size:20px;padding:0 2px;min-width:30px;
+min-height:30px;line-height:1}
+.empty{text-align:center;color:var(–steel);font-size:14px;padding:18px 8px}
+
+/* ––––– dodaci ––––– */
+details summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;
+align-items:center;min-height:30px}
+details summary::-webkit-details-marker{display:none}
+details summary .chev{color:var(–steel);font-size:13px}
+.dod{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #EBEEF0}
+.dod:last-child{border-bottom:0}
+.dod .nm{flex:1;font-size:13.5px;line-height:1.25}
+.dod .u{font-family:var(–num);font-size:10.5px;color:var(–steel)}
+.dod input{width:62px;padding:8px;text-align:center;font-family:var(–num);font-weight:600;
+min-height:40px;background:#FFFDF0;border-color:#E4DCA8}
+.dod .am{font-family:var(–num);font-size:13px;font-weight:700;min-width:74px;text-align:right}
+
+/* ––––– readout ––––– */
+.readout{
+position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(–alu);
+border-top:2px solid var(–mark);
+padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+}
+.rmain{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:56px}
+.rmain .t .lbl{color:var(–steel)}
+.rtot{font-family:var(–num);font-variant-numeric:tabular-nums;font-size:29px;font-weight:700;
+color:var(–mark);line-height:1.05;letter-spacing:-.01em}
+.rsub{font-family:var(–num);font-size:11px;color:var(–steel);margin-top:1px}
+.exp{background:#1F2429;border:1px solid var(–alu3);border-radius:9px;color:var(–steel);
+min-width:46px;min-height:46px;font-size:15px}
+.panel{display:none;border-top:1px solid var(–alu3);margin-top:10px;padding-top:10px;
+max-height:60vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.panel.on{display:block}
+.pl{display:flex;justify-content:space-between;padding:5px 0;font-size:13px;color:#D5DADE}
+.pl .v{font-family:var(–num);font-variant-numeric:tabular-nums}
+.pl.tot{border-top:1px solid var(–alu3);margin-top:5px;padding-top:8px;font-weight:700;color:#fff}
+.pl.mrg{color:var(–mark)}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}
+.acts button{min-height:46px;border-radius:10px;border:1px solid var(–alu3);background:#1F2429;
+color:#E8EBED;font-family:var(–lbl);font-size:10.5px;font-weight:600;
+letter-spacing:.07em;text-transform:uppercase;padding:6px}
+.acts button.pri{background:var(–mark);color:#14181B;border-color:var(–mark)}
+.acts button.wide{grid-column:1/-1}
+.mrgbtn{width:100%;margin-top:8px;min-height:38px;border-radius:8px;background:none;
+border:1px dashed var(–alu3);color:var(–steel);font-family:var(–lbl);
+font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(–bar) + 24px);
+background:var(–ink);color:#fff;padding:11px 17px;border-radius:10px;font-size:13.5px;
+z-index:60;opacity:0;transition:opacity .2s;pointer-events:none;max-width:88vw;text-align:center}
+.toast.on{opacity:.96}
+.foot{text-align:center;padding:6px 12px 18px;font-size:11px;color:var(–steel);line-height:1.5}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+</head>
+<body>
+
+<header>
+  <div class="hrow">
+    <div>
+      <div class="wm">PLA<span>C</span></div>
+      <div class="sub">Kalkulator ponude</div>
+    </div>
+    <div class="toggle" role="group" aria-label="Cjenik">
+      <button id="bStd" aria-pressed="true">Standard</button>
+      <button id="bSez" aria-pressed="false">Sezona</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="card">
+    <span class="lbl">Nova pozicija</span>
+    <select id="sel" aria-label="Proizvod"></select>
+    <div class="dims">
+      <div><span class="lbl">Širina mm</span><input class="mm" id="iS" inputmode="numeric" placeholder="—"></div>
+      <div><span class="lbl">Visina mm</span><input class="mm" id="iV" inputmode="numeric" placeholder="—"></div>
+      <div><span class="lbl">Komada</span><input class="mm" id="iK" inputmode="numeric" value="1"></div>
+    </div>
+    <div class="prev">
+      <div><span class="lbl">m²</span> <span class="v" id="pM2">—</span>
+           &nbsp;&nbsp;<span class="lbl">€/m²</span> <span class="v" id="pC">—</span></div>
+      <div class="v big" id="pI">—</div>
+    </div>
+    <button class="add" id="bAdd" disabled>Dodaj poziciju</button>
+  </div>
+
+  <div class="card">
+    <span class="lbl">Pozicije <span id="cnt" class="num"></span></span>
+    <div id="list"><div class="empty">Odaberi proizvod i unesi mjere.</div></div>
+  </div>
+
+  <div class="card">
+    <details id="detDod">
+      <summary><span class="lbl">Dodaci i usluge <span id="dcnt" class="num"></span></span>
+               <span class="chev">▾</span></summary>
+      <div id="dlist" style="margin-top:10px"></div>
+    </details>
+  </div>
+
+  <div class="card">
+    <span class="lbl">Popust na ukupno (%)</span>
+    <input class="mm" id="iP" inputmode="decimal" value="0" style="max-width:120px">
+  </div>
+
+  <div class="foot" id="foot"></div>
+</main>
+
+<div class="readout">
+  <div class="rmain">
+    <div class="t">
+      <span class="lbl">Ukupno s PDV-om</span>
+      <div class="rtot num" id="rTot">0,00 €</div>
+      <div class="rsub" id="rSub">bez PDV-a 0,00 €</div>
+    </div>
+    <button class="exp" id="bExp" aria-expanded="false" aria-label="Prikaži razradu">▲</button>
+  </div>
+  <div class="panel" id="panel">
+    <div class="pl"><span>Stolarija</span><span class="v" id="xSt">0,00</span></div>
+    <div class="pl"><span>Dodaci i usluge</span><span class="v" id="xDo">0,00</span></div>
+    <div class="pl"><span>Ukupno neto</span><span class="v" id="xNe">0,00</span></div>
+    <div class="pl" id="rowPop" style="display:none"><span>Popust</span><span class="v" id="xPo">0,00</span></div>
+    <div class="pl"><span>Osnovica</span><span class="v" id="xOs">0,00</span></div>
+    <div class="pl"><span>PDV 25 %</span><span class="v" id="xPd">0,00</span></div>
+    <div class="pl tot"><span>Ukupno s PDV-om</span><span class="v" id="xUk">0,00</span></div>
+    <div class="acts">
+      <button class="pri" id="bXls">Kopiraj za Excel</button>
+      <button id="bShare">Pošalji ponudu</button>
+      <button class="wide" id="bNew">Nova ponuda — obriši sve</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ==========================================================
+   CJENIK — JAVNA VERZIJA. Sadrži samo PRODAJNE cijene
+   (std = standardni cjenik, sez = sezonski), u EUR/m2.
+   Nabavne cijene i marže NISU u ovoj datoteci.
+   ========================================================== */
+const DB = {
+ "poz": [
+  {
+   "n": "KBE 76 | Prozor jednokrilni - bijela 2S",
+   "std": 175,
+   "sez": 191
+  },
+  {
+   "n": "KBE 76 | Prozor jednokrilni - bijela 3S",
+   "std": 197,
+   "sez": 215
+  },
+  {
+   "n": "KBE 76 | Prozor jednokrilni - boja RAL 2S",
+   "std": 208,
+   "sez": 227
+  },
+  {
+   "n": "KBE 76 | Prozor jednokrilni - boja RAL 3S",
+   "std": 233,
+   "sez": 255
+  },
+  {
+   "n": "KBE 76 | Prozor dvokrilni - bijela 2S",
+   "std": 197,
+   "sez": 215
+  },
+  {
+   "n": "KBE 76 | Prozor dvokrilni - bijela 3S",
+   "std": 220,
+   "sez": 240
+  },
+  {
+   "n": "KBE 76 | Prozor dvokrilni - boja RAL 2S",
+   "std": 233,
+   "sez": 255
+  },
+  {
+   "n": "KBE 76 | Prozor dvokrilni - boja RAL 3S",
+   "std": 263,
+   "sez": 287
+  },
+  {
+   "n": "KBE 76 | Prozor trokrilni - bijela 2S",
+   "std": 217,
+   "sez": 236
+  },
+  {
+   "n": "KBE 76 | Prozor trokrilni - bijela 3S",
+   "std": 247,
+   "sez": 269
+  },
+  {
+   "n": "KBE 76 | Balkonska vrata otkl.-klizna - bijela",
+   "std": 258,
+   "sez": 282
+  },
+  {
+   "n": "KBE 76 | Balkonska vrata otkl.-klizna - RAL",
+   "std": 297,
+   "sez": 324
+  },
+  {
+   "n": "KBE 76 | Ulazna vrata jednokrila - bijela",
+   "std": 400,
+   "sez": 436
+  },
+  {
+   "n": "KBE 76 | Ulazna vrata jednokrila - RAL",
+   "std": 450,
+   "sez": 491
+  },
+  {
+   "n": "KBE 76 | Ulazna vrata dvokrila - bijela",
+   "std": 500,
+   "sez": 545
+  },
+  {
+   "n": "KBE 76 | Klizna stijena siber 2-krilna",
+   "std": 308,
+   "sez": 336
+  },
+  {
+   "n": "KBE 76 | Fikser / Fiksno krilo - bijela 2S",
+   "std": 142,
+   "sez": 155
+  },
+  {
+   "n": "KBE 76 | Fikser / Fiksno krilo - bijela 3S",
+   "std": 163,
+   "sez": 178
+  },
+  {
+   "n": "FEAL T65 | Prozor fiksni - bijela 2S",
+   "std": 348,
+   "sez": 382
+  },
+  {
+   "n": "FEAL T65 | Prozor fiksni - RAL boja 2S",
+   "std": 402,
+   "sez": 441
+  },
+  {
+   "n": "FEAL T65 | Prozor fiksni - antracit 2S",
+   "std": 393,
+   "sez": 431
+  },
+  {
+   "n": "FEAL T65 | Prozor otkl.-zaokretni - bijela 2S",
+   "std": 411,
+   "sez": 451
+  },
+  {
+   "n": "FEAL T65 | Prozor otkl.-zaokretni - RAL 2S",
+   "std": 473,
+   "sez": 520
+  },
+  {
+   "n": "FEAL T65 | Prozor otkl.-zaokretni - antracit",
+   "std": 464,
+   "sez": 510
+  },
+  {
+   "n": "FEAL T65 | Balkonska vrata - bijela 2S",
+   "std": 446,
+   "sez": 490
+  },
+  {
+   "n": "FEAL T65 | Balkonska vrata - RAL 2S",
+   "std": 509,
+   "sez": 559
+  },
+  {
+   "n": "FEAL T65 | Ulazna vrata jednokrila - bijela",
+   "std": 571,
+   "sez": 627
+  },
+  {
+   "n": "FEAL T65 | Ulazna vrata jednokrila - RAL",
+   "std": 652,
+   "sez": 716
+  },
+  {
+   "n": "FEAL T65 | Ulazna vrata jednokrila - antracit",
+   "std": 639,
+   "sez": 702
+  },
+  {
+   "n": "FEAL T65 | Klizna stijena 2-krilna - bijela",
+   "std": 500,
+   "sez": 549
+  },
+  {
+   "n": "FEAL T65 | Klizna stijena 2-krilna - RAL",
+   "std": 571,
+   "sez": 627
+  },
+  {
+   "n": "FEAL T150 | Podizno-klizna 2-krilna - bijela",
+   "std": 830,
+   "sez": 917
+  },
+  {
+   "n": "FEAL T150 | Podizno-klizna 2-krilna - RAL",
+   "std": 943,
+   "sez": 1042
+  },
+  {
+   "n": "FEAL T150 | Podizno-klizna 2-krilna - antracit",
+   "std": 925,
+   "sez": 1021
+  },
+  {
+   "n": "FEAL T150 | Podizno-klizna 3-krilna - bijela",
+   "std": 868,
+   "sez": 958
+  },
+  {
+   "n": "FEAL T150 | Podizno-klizna 3-krilna - RAL",
+   "std": 991,
+   "sez": 1094
+  },
+  {
+   "n": "FEAL T120 | Podizno-klizna 2-krilna 2S - bijela",
+   "std": 613,
+   "sez": 667
+  },
+  {
+   "n": "FEAL T120 | Podizno-klizna 2-krilna 2S - RAL",
+   "std": 702,
+   "sez": 763
+  },
+  {
+   "n": "FEAL T120 | Podizno-klizna 2-krilna 2S - antracit",
+   "std": 685,
+   "sez": 746
+  },
+  {
+   "n": "FEAL T120 | Podizno-klizna 3-krilna 2S - bijela",
+   "std": 645,
+   "sez": 702
+  },
+  {
+   "n": "FEAL T120 | Podizno-klizna 3-krilna 2S - RAL",
+   "std": 734,
+   "sez": 798
+  },
+  {
+   "n": "FEAL T120 | Podizno-klizna 4-krilna 2S - bijela",
+   "std": 677,
+   "sez": 737
+  },
+  {
+   "n": "FEAL T120-D | Podizno-klizna 2-krilna 3S - bijela",
+   "std": 694,
+   "sez": 754
+  },
+  {
+   "n": "FEAL T120-D | Podizno-klizna 2-krilna 3S - RAL",
+   "std": 790,
+   "sez": 860
+  },
+  {
+   "n": "FEAL T120-D | Podizno-klizna 2-krilna 3S - antracit",
+   "std": 771,
+   "sez": 839
+  },
+  {
+   "n": "FEAL T120-D | Podizno-klizna 3-krilna 3S - bijela",
+   "std": 726,
+   "sez": 789
+  },
+  {
+   "n": "FEAL T120-D | Podizno-klizna 3-krilna 3S - RAL",
+   "std": 823,
+   "sez": 895
+  },
+  {
+   "n": "GRILJE ALU | Zaokretne - fiksne lamele",
+   "std": 269,
+   "sez": 292
+  },
+  {
+   "n": "GRILJE ALU | Zaokretne - pomicne lamele",
+   "std": 300,
+   "sez": 325
+  },
+  {
+   "n": "GRILJE ALU | Klizne (vodilice)",
+   "std": 346,
+   "sez": 375
+  },
+  {
+   "n": "GRILJE ALU | Harmo (visekrilne)",
+   "std": 323,
+   "sez": 350
+  },
+  {
+   "n": "GRILJE PVC | Zaokretne - fiksne lamele",
+   "std": 215,
+   "sez": 233
+  },
+  {
+   "n": "DODACI | Roleta aluminijska vanjska - rucna",
+   "std": 104,
+   "sez": 116
+  },
+  {
+   "n": "DODACI | Roleta aluminijska vanjska - motor",
+   "std": 271,
+   "sez": 302
+  },
+  {
+   "n": "DODACI | Komarnik fiksni u okviru",
+   "std": 38,
+   "sez": 42
+  },
+  {
+   "n": "DODACI | Komarnik rolovani",
+   "std": 104,
+   "sez": 116
+  },
+  {
+   "n": "DODACI | Montaza / ugradnja stolarije",
+   "std": 0,
+   "sez": 0
+  },
+  {
+   "n": "DODACI | Demontaza stare stolarije",
+   "std": 0,
+   "sez": 0
+  },
+  {
+   "n": "DODACI | Transport / dostava",
+   "std": 0,
+   "sez": 0
+  },
+  {
+   "n": "DODACI | Posebna pozicija (upisite rucno)",
+   "std": 0,
+   "sez": 0
+  }
+ ],
+ "dod": [
+  {
+   "n": "Rolete aluminijske vanjske - rucne",
+   "jm": "kom",
+   "cij": 105
+  },
+  {
+   "n": "Rolete aluminijske vanjske - motor",
+   "jm": "kom",
+   "cij": 270
+  },
+  {
+   "n": "Komarnici fiksni",
+   "jm": "kom",
+   "cij": 40
+  },
+  {
+   "n": "Komarnici rolovani",
+   "jm": "kom",
+   "cij": 100
+  },
+  {
+   "n": "Montaza / ugradnja stolarije",
+   "jm": "kom",
+   "cij": 100
+  },
+  {
+   "n": "Demontaza stare stolarije",
+   "jm": "kom",
+   "cij": 32
+  },
+  {
+   "n": "Transport / dostava",
+   "jm": "pausal",
+   "cij": 60
+  },
+  {
+   "n": "RAL montaza (brtvene trake 3-sloj)",
+   "jm": "kom",
+   "cij": 150
+  },
+  {
+   "n": "Zavrsna obrada spaleta (po m')",
+   "jm": "m'",
+   "cij": 18
+  },
+  {
+   "n": "Posebna pozicija",
+   "jm": "kom",
+   "cij": 0
+  }
+ ]
+};
+
+/* ---- pomoćne ---- */
+const r2=v=>Math.round((v+Number.EPSILON)*100)/100;
+const r3=v=>Math.round((v+Number.EPSILON)*1000)/1000;
+const r0=v=>Math.round(v+Number.EPSILON);
+const eur=v=>v.toLocaleString('hr-HR',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+const nn=v=>v.toLocaleString('hr-HR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const num=el=>{const v=parseFloat(String(el.value).replace(',','.'));return isFinite(v)?v:0};
+const $=id=>document.getElementById(id);
+
+let sez=false;                 // false = STANDARD, true = SEZONA
+let pos=[];                    // pozicije
+let dod=DB.dod.map(x=>({...x,kom:0}));
+
+/* prodajna cijena — gotova iz cjenika (javna verzija) */
+function prodajna(p){ return (sez? p.sez : p.std) || 0; }
+/* iznos pozicije — identično Excelu */
+function iznos(naziv,S,V,K){
+  const p=DB.poz.find(x=>x.n===naziv); if(!p) return {m2:0,cij:0,izn:0};
+  const m2=(S>0&&V>0)?r3(S*V/1e6):0, cij=prodajna(p);
+  return {m2, cij, izn: m2>0? r2(cij*m2*K) : r2(cij*K)};
+}
+
+/* ---- izbornik proizvoda ---- */
+(function(){
+  const g={}; DB.poz.forEach(p=>{const k=p.n.split('|')[0].trim();(g[k]=g[k]||[]).push(p)});
+  let h='<option value="">— odaberi proizvod —</option>';
+  for(const k in g){
+    h+='<optgroup label="'+k+'">';
+    g[k].forEach(p=>{h+='<option value="'+p.n.replace(/"/g,'&quot;')+'">'
+      +p.n.split('|').slice(1).join('|').trim()+'</option>'});
+    h+='</optgroup>';
+  }
+  $('sel').innerHTML=h;
+})();
+
+/* ---- dodaci ---- */
+$('dlist').innerHTML=dod.map((x,i)=>
+  '<div class="dod"><div style="flex:1;min-width:0"><div class="nm">'+x.n+'</div>'
+ +(x.cij? '<div class="u">'+nn(x.cij)+' €/'+x.jm+'</div>'
+        : '<input inputmode="decimal" value="0" data-c="'+i+'" placeholder="€/'+x.jm+'"'
+          +' style="width:78px;margin-top:4px" aria-label="Cijena za '+x.n+'">')
+ +'</div>'
+ +'<input inputmode="decimal" value="0" data-d="'+i+'" aria-label="Količina za '+x.n+'">'
+ +'<div class="am" id="da'+i+'">—</div></div>').join('');
+$('dlist').addEventListener('input',e=>{
+  const i=e.target.dataset.d, j=e.target.dataset.c;
+  if(i!==undefined) dod[i].kom=num(e.target);
+  else if(j!==undefined) dod[j].cij=num(e.target);
+  else return;
+  const k=(i!==undefined)?i:j;
+  $('da'+k).textContent = dod[k].kom? nn(r2(dod[k].cij*dod[k].kom)) : '—';
+  calc(); save();
+});
+
+/* ---- živa najava ---- */
+function preview(){
+  const n=$('sel').value, S=num($('iS')), V=num($('iV')), K=num($('iK'))||0;
+  const ok = n && K>0 && ((S>0&&V>0)||(S===0&&V===0));
+  $('bAdd').disabled=!(n&&K>0);
+  if(!n){$('pM2').textContent='—';$('pC').textContent='—';$('pI').textContent='—';return}
+  const c=iznos(n,S,V,K);
+  $('pM2').textContent = c.m2? c.m2.toLocaleString('hr-HR') : '—';
+  $('pC').textContent = c.cij? nn(c.cij) : '—';
+  $('pI').textContent = (K>0)? eur(c.izn) : '—';
+}
+['sel','iS','iV','iK'].forEach(id=>$(id).addEventListener('input',preview));
+
+/* ---- dodavanje / brisanje ---- */
+$('bAdd').onclick=()=>{
+  const n=$('sel').value, S=num($('iS')), V=num($('iV')), K=num($('iK'));
+  if(!n||K<=0) return;
+  pos.push({n,S,V,K});
+  $('iS').value='';$('iV').value='';$('iK').value='1';
+  preview(); render(); save(); toast('Pozicija dodana');
+};
+function del(i){pos.splice(i,1);render();save()}
+
+function render(){
+  $('cnt').textContent = pos.length? '('+pos.length+')' : '';
+  if(!pos.length){$('list').innerHTML='<div class="empty">Odaberi proizvod i unesi mjere.</div>'}
+  else{
+    $('list').innerHTML=pos.map((p,i)=>{
+      const c=iznos(p.n,p.S,p.V,p.K);
+      const dim=(p.S&&p.V)? p.S+'×'+p.V+' mm' : 'bez mjera';
+      return '<div class="pos"><div class="rb">'+(i+1)+'</div><div class="mid">'
+        +'<div class="nm">'+p.n.split('|').slice(1).join('|').trim()+'</div>'
+        +'<div class="dt">'+dim+' · '+p.K+' kom'+(c.m2?' · '+c.m2.toLocaleString('hr-HR')+' m²':'')
+        +' · '+nn(c.cij)+' €/m²</div></div>'
+        +'<div class="am">'+nn(c.izn)+'</div>'
+        +'<button class="del" data-i="'+i+'" aria-label="Ukloni poziciju '+(i+1)+'">×</button></div>';
+    }).join('');
+  }
+  calc();
+}
+$('list').addEventListener('click',e=>{
+  const b=e.target.closest('.del'); if(b) del(+b.dataset.i);
+});
+
+/* ---- ukupno ---- */
+function totals(){
+  let st=0;
+  pos.forEach(p=>{const c=iznos(p.n,p.S,p.V,p.K); st=r2(st+c.izn)});
+  let dd=0; dod.forEach(x=>{if(x.kom) dd=r2(dd+r2(x.cij*x.kom))});
+  const neto=r2(st+dd), pp=num($('iP'));
+  const pop = pp>0? r2(neto*pp/100) : 0;
+  const osn=r2(neto-pop), pdv=r2(osn*0.25);
+  return {st,dd,neto,pop,osn,pdv,uk:r2(osn+pdv)};
+}
+function calc(){
+  const t=totals();
+  $('rTot').textContent=eur(t.uk);
+  $('rSub').textContent='bez PDV-a '+eur(t.osn);
+  $('xSt').textContent=nn(t.st); $('xDo').textContent=nn(t.dd);
+  $('xNe').textContent=nn(t.neto); $('xPo').textContent='− '+nn(t.pop);
+  $('xOs').textContent=nn(t.osn); $('xPd').textContent=nn(t.pdv);
+  $('xUk').textContent=nn(t.uk);
+  $('rowPop').style.display = t.pop? 'flex':'none';
+  const nd=dod.filter(x=>x.kom).length;
+  $('dcnt').textContent = nd? '('+nd+')' : '';
+  $('foot').textContent='Cjenik: '+(sez?'SEZONA':'STANDARD')
+    +' · '+DB.poz.length+' proizvoda · cijene bez PDV-a do zbroja';
+}
+$('iP').addEventListener('input',()=>{calc();save()});
+
+/* ---- stanje u adresi: prezivi zatvaranje aplikacije, moze se poslati kao link ---- */
+let noSave=false;
+function save(){
+  if(noSave) return;
+  const P=pos.map(p=>DB.poz.findIndex(x=>x.n===p.n)+'.'+(p.S||0)+'.'+(p.V||0)+'.'+p.K).join('_');
+  const D=dod.map((x,i)=>x.kom? i+'.'+x.kom+'.'+x.cij : '').filter(Boolean).join('_');
+  const h='v1'+(sez?'s':'n')+'|'+P+'|'+D+'|'+(num($('iP'))||0);
+  try{history.replaceState(null,'','#'+encodeURIComponent(h))}catch(e){}
+}
+function load(){
+  let h=''; try{h=decodeURIComponent(location.hash.slice(1))}catch(e){}
+  if(!h.startsWith('v1')) return false;
+  noSave=true;
+  const [flag,P,D,PP]=h.split('|');
+  sez = flag[2]==='s';
+  $('bStd').setAttribute('aria-pressed',String(!sez));
+  $('bSez').setAttribute('aria-pressed',String(sez));
+  if(P) P.split('_').forEach(t=>{
+    const [i,S,V,K]=t.split('.').map(Number);
+    if(DB.poz[i]) pos.push({n:DB.poz[i].n,S:S,V:V,K:K});
+  });
+  if(D) D.split('_').forEach(t=>{
+    const [i,k,c]=t.split('.').map(Number);
+    if(dod[i]){dod[i].kom=k; if(isFinite(c)) dod[i].cij=c;
+      const qi=$('dlist').querySelector('[data-d="'+i+'"]'); if(qi) qi.value=k;
+      const ci=$('dlist').querySelector('[data-c="'+i+'"]'); if(ci) ci.value=c;
+      $('da'+i).textContent=nn(r2(dod[i].cij*k));}
+  });
+  if(PP) $('iP').value=PP;
+  noSave=false;
+  return true;
+}
+
+/* ---- cjenik toggle ---- */
+function setSez(v){
+  sez=v;
+  $('bStd').setAttribute('aria-pressed',String(!v));
+  $('bSez').setAttribute('aria-pressed',String(v));
+  preview(); render(); save();
+}
+$('bStd').onclick=()=>setSez(false);
+$('bSez').onclick=()=>setSez(true);
+
+/* ---- panel ---- */
+$('bExp').onclick=()=>{
+  const on=$('panel').classList.toggle('on');
+  $('bExp').textContent=on?'▼':'▲';
+  $('bExp').setAttribute('aria-expanded',String(on));
+  document.body.style.setProperty('--bar', on? '340px':'96px');
+};
+
+/* ---- izvoz ---- */
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('on');
+  clearTimeout(t._x);t._x=setTimeout(()=>t.classList.remove('on'),1900)}
+async function copy(txt,msg){
+  try{await navigator.clipboard.writeText(txt);toast(msg)}
+  catch(e){
+    const ta=document.createElement('textarea');ta.value=txt;
+    ta.style.cssText='position:fixed;top:0;left:0;opacity:0';
+    document.body.appendChild(ta);ta.focus();ta.select();
+    try{document.execCommand('copy');toast(msg)}catch(_){toast('Kopiranje nije uspjelo')}
+    document.body.removeChild(ta);
+  }
+}
+$('bXls').onclick=()=>{
+  if(!pos.length){toast('Nema pozicija');return}
+  const rows=pos.map((p,i)=>{
+    const r=15+i;
+    return [p.n, p.S||'', p.V||'',
+      '=IF(AND(D'+r+'>0,E'+r+'>0),ROUND(D'+r+'*E'+r+'/1000000,3),0)', p.K].join('\t');
+  });
+  copy(rows.join('\n'),'Kopirano — u Excelu klikni ćeliju C15 i zalijepi');
+};
+$('bShare').onclick=async()=>{
+  const t=totals();
+  if(!pos.length){toast('Nema pozicija');return}
+  let s='PONUDA — PLAC d.o.o.\n';
+  pos.forEach((p,i)=>{const c=iznos(p.n,p.S,p.V,p.K);
+    s+='\n'+(i+1)+'. '+p.n+'\n   '+(p.S&&p.V?p.S+'×'+p.V+' mm · ':'')+p.K+' kom'
+      +(c.m2?' · '+c.m2.toLocaleString('hr-HR')+' m²':'')+' — '+eur(c.izn)+'\n'});
+  dod.forEach(x=>{if(x.kom) s+='\n• '+x.n+' — '+x.kom+' '+x.jm+' — '+eur(r2(x.cij*x.kom))+'\n'});
+  s+='\nUkupno neto: '+eur(t.neto);
+  if(t.pop) s+='\nPopust: −'+eur(t.pop)+'\nOsnovica: '+eur(t.osn);
+  s+='\nPDV 25 %: '+eur(t.pdv)+'\nUKUPNO S PDV-om: '+eur(t.uk)
+   +'\n\nCijene bez ugradnje ako nije navedeno. Ponuda je informativna do potvrde mjera na objektu.';
+  if(navigator.share){try{await navigator.share({title:'Ponuda PLAC',text:s});return}catch(e){}}
+  copy(s,'Ponuda kopirana — zalijepi u WhatsApp ili mail');
+};
+$('bNew').onclick=()=>{
+  if(!confirm('Obrisati sve pozicije i dodatke?')) return;
+  pos=[];dod.forEach(x=>x.kom=0);$('iP').value='0';
+  $('dlist').querySelectorAll('input').forEach(i=>i.value='0');
+  $('dlist').querySelectorAll('.am').forEach(a=>a.textContent='—');
+  render();save();toast('Nova ponuda');
+};
+
+const vraceno=load();
+if(vraceno){$('detDod').open = dod.some(x=>x.kom)}
+render();preview();
+if(vraceno) toast('Ponuda vraćena iz adrese');
+</script>
+
+</body>
+</html>
