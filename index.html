@@ -60,6 +60,8 @@ header{position:sticky;top:0;z-index:30;background:#2B3035;
 /* svijetla pozadina je na omotaču, ne na body — iOS 26 boji traku statusa bojom body/html */
 .pg{background:#F1F3F4;min-height:100vh;padding-bottom:calc(104px + env(safe-area-inset-bottom))}
 main{padding:12px 11px 0;max-width:680px;margin:0 auto}
+/* iOS 26 crta zamućenu traku ispod sata; u instaliranoj aplikaciji tekst zaglavlja spuštamo ispod nje */
+@media (display-mode: standalone){ header{padding-top:calc(env(safe-area-inset-top) + 26px)} }
 .card{background:#FFF;border-radius:14px;padding:13px;margin-bottom:11px;
       box-shadow:0 1px 2px rgba(20,24,27,.10)}
 .card>.lbl:first-child{display:block;margin-bottom:9px}
@@ -165,7 +167,7 @@ textarea{min-height:44px;resize:vertical;font-size:14px}
 details summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;
                 align-items:center;min-height:30px}
 details summary::-webkit-details-marker{display:none}
-.chev{color:#8A939B;font-size:13px}
+.chev{color:#4A525A;font-size:22px;line-height:1;min-width:30px;text-align:center}
 .dod{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid #EBEEF0}
 .dod:last-child{border-bottom:0}
 .dod .nm{flex:1;font-size:13.5px;line-height:1.25;min-width:0}
