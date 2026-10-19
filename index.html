@@ -23,8 +23,12 @@
    --------------------------------------------------------------- */
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
+/* iOS 26: traka statusa uzima boju pozadine dokumenta — zato je html tamni, a svijetla je samo body */
+html{background:#2B3035}
+body::before{content:"";position:fixed;left:0;right:0;top:0;height:env(safe-area-inset-top);
+             background:#2B3035;z-index:100;pointer-events:none}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-     background:#F1F3F4;color:#14181B;font-size:16px;line-height:1.4;
+     background:#F1F3F4;color:#14181B;font-size:16px;line-height:1.4;min-height:100vh;
      padding-bottom:calc(104px + env(safe-area-inset-bottom))}
 .lbl{font-family:'Avenir Next','Avenir',-apple-system,sans-serif;font-size:10px;font-weight:600;
      letter-spacing:.1em;text-transform:uppercase;color:#8A939B}
