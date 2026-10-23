@@ -1,6 +1,6 @@
 /* PLAC — kalkulator ponude · service worker
    Verziju povisiti pri svakoj izmjeni aplikacije da se osvjezi kod korisnika. */
-const V = 'plac-b2144858';
+const V = 'plac-60ac38c0';
 const SHELL = ['./', './index.html', './manifest.webmanifest',
                './icon-192.png', './icon-512.png', './icon-512-maskable.png',
                './apple-touch-icon.png'];
